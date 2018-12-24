@@ -2,7 +2,7 @@
   "name": "@justerest/multi-replace",
   "version": "1.0.0",
   "description": "Replaces text and filenames in the selected catalog preserving cases.",
-  "keywords": ["replace", "files", "filename"],
+  "keywords": ["replace", "files", "filename", "angular", "components"],
   "private": false,
   "bin": {
     "multi-replace": "dist/cli.js"
