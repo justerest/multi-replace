@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.2.0"></a>
+# [1.2.0](https://github.com/justerest/multi-replace/compare/v1.1.0...v1.2.0) (2018-12-25)
+
+
+### Features
+
+* can work with one (several) files ([d6bb8df](https://github.com/justerest/multi-replace/commit/d6bb8df))
+
+
+
 <a name="1.1.0"></a>
 # [1.1.0](https://github.com/justerest/multi-replace/compare/v1.0.0...v1.1.0) (2018-12-24)
 
