@@ -1,3 +1,6 @@
+export { getReplaceChanges } from './getReplaceChanges';
+export { multiReplace } from './multiReplace';
+export { multiReplaceFilename } from './multiReplaceFilename';
 export declare function getMultiReplaceChanges({ paths, searchValue, replaceValue }: {
     paths: string[];
     searchValue: string;
@@ -18,5 +21,3 @@ export declare function getStrictReplaceChanges({ paths, searchValue, replaceVal
     srcText: string;
     outText: string;
 }>;
-export { multiReplace } from './multiReplace';
-export { moveFile } from './utils/moveFile';
