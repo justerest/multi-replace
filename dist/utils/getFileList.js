@@ -5,10 +5,10 @@ const glob = require("glob");
 const path_1 = require("path");
 const rxjs_1 = require("rxjs");
 const operators_1 = require("rxjs/operators");
-function getFiles(path) {
+function getFileList(path) {
     return checkDir(path).pipe(operators_1.map((isDir) => isDir ? path + '/**' : path), operators_1.mergeMap(globFiles));
 }
-exports.getFiles = getFiles;
+exports.getFileList = getFileList;
 function checkDir(path) {
     return rxjs_1.defer(async () => await fs_extra_1.pathExists(path) && (await fs_extra_1.lstat(path)).isDirectory());
 }

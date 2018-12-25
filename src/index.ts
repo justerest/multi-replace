@@ -1,6 +1,10 @@
 import { getReplaceChanges } from './getReplaceChanges';
 import { multiReplace } from './multiReplace';
 
+export { getReplaceChanges } from './getReplaceChanges';
+export { multiReplace } from './multiReplace';
+export { multiReplaceFilename } from './multiReplaceFilename';
+
 export function getMultiReplaceChanges({ paths, searchValue, replaceValue }: {
     paths: string[];
     searchValue: string;
@@ -16,6 +20,3 @@ export function getStrictReplaceChanges({ paths, searchValue, replaceValue }: {
 }) {
     return getReplaceChanges(paths, (str) => str.replace(new RegExp(searchValue, 'g'), replaceValue));
 }
-
-export { multiReplace } from './multiReplace';
-export { moveFile } from './utils/moveFile';
