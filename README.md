@@ -13,9 +13,8 @@ multi-replace [--options] <...paths>
 
 ## Options
 
-| Option         | Alias     | Type       | Description                          |
-| -------------- | --------- | ---------- | ------------------------------------ |
-| --paths        | `default` | `string[]` | Catalog list                         |
-| --searchValue  | -s        | `string`   | Search text                          |
-| --replaceValue | -r        | `string`   | Replacement text                     |
-| --strict       |           | `boolean`  | Don't change case (default: `false`) |
+| Option         | Alias     | Type          | Description      |
+| -------------- | --------- | ------------- | ---------------- |
+| --paths        | `default` | `...string[]` | Catalog list     |
+| --searchValue  | -s        | `string`      | Search text      |
+| --replaceValue | -r        | `string`      | Replacement text |
