@@ -4,10 +4,11 @@
   "description": "Replaces text and filenames in the selected catalog preserving cases.",
   "keywords": [
     "replace",
+    "rename",
     "files",
     "filename",
     "angular",
-    "components"
+    "component"
   ],
   "private": false,
   "bin": {
