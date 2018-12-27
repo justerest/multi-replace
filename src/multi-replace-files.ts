@@ -15,18 +15,19 @@ export function multiReplaceFiles({ paths, searchValue, replaceValue }: {
     srcText: string;
     outFilePath: string;
     outText: string;
-    isSuccess: boolean;
+    textChanged?: boolean;
+    pathChanged?: boolean;
 }> {
     const changes$ = getReplaceChanges({ paths, searchValue, replaceValue }).pipe(shareReplay());
 
     const textChanges$ = changes$.pipe(
         filter(({ srcText, outText }) => srcText !== outText),
-        mergeSet('isSuccess', ({ outText, srcFilePath }) => toBoolean(writeFile(srcFilePath, outText))),
+        mergeSet('textChanged', ({ outText, srcFilePath }) => toBoolean(writeFile(srcFilePath, outText))),
     );
 
     const filePathChanges$ = changes$.pipe(
         filter(({ srcFilePath, outFilePath }) => srcFilePath !== outFilePath),
-        mergeSet('isSuccess', ({ srcFilePath, outFilePath }) => toBoolean(moveFile(srcFilePath, outFilePath))),
+        mergeSet('pathChanged', ({ srcFilePath, outFilePath }) => toBoolean(moveFile(srcFilePath, outFilePath))),
     );
 
     return concat(textChanges$, filePathChanges$);

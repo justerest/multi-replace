@@ -14,13 +14,21 @@ if (!paths.length || !searchValue || !replaceValue) {
 }
 multi_replace_files_1.multiReplaceFiles({ paths, searchValue, replaceValue })
     .subscribe({
-    next({ srcFilePath, outFilePath, isSuccess }) {
-        const status = isSuccess && srcFilePath === outFilePath ? chalk_1.default.greenBright('CHANGE') :
-            isSuccess ? chalk_1.default.greenBright('MOVE') :
-                chalk_1.default.bgRedBright('FAIL');
-        console.log(`\n${status}:`);
-        console.log(chalk_1.default.yellow(srcFilePath), '->');
-        console.log(chalk_1.default.yellowBright(outFilePath));
+    next({ srcFilePath, outFilePath, textChanged, pathChanged }) {
+        if (textChanged) {
+            console.log(`\n${chalk_1.default.greenBright('CHANGED')}:`);
+            console.log(chalk_1.default.yellow(srcFilePath));
+        }
+        else if (pathChanged) {
+            console.log(`\n${chalk_1.default.greenBright('MOVED')}:`);
+            console.log(chalk_1.default.yellow(srcFilePath), '->');
+            console.log(chalk_1.default.yellowBright(outFilePath));
+        }
+        else {
+            chalk_1.default.bgRedBright('FAIL');
+            console.log(chalk_1.default.yellow(srcFilePath), '->');
+            console.log(chalk_1.default.yellowBright(outFilePath));
+        }
     },
     complete() {
         console.log(`\n${chalk_1.default.bgCyan(chalk_1.default.bold(' FINISH '))}\n`);

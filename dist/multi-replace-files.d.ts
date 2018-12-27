@@ -8,5 +8,6 @@ export declare function multiReplaceFiles({ paths, searchValue, replaceValue }: 
     srcText: string;
     outFilePath: string;
     outText: string;
-    isSuccess: boolean;
+    textChanged?: boolean;
+    pathChanged?: boolean;
 }>;

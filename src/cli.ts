@@ -19,15 +19,21 @@ if (!paths.length || !searchValue || !replaceValue) {
 
 multiReplaceFiles({ paths, searchValue, replaceValue })
     .subscribe({
-        next({ srcFilePath, outFilePath, isSuccess }) {
-            const status =
-                isSuccess && srcFilePath === outFilePath ? chalk.greenBright('CHANGE') :
-                    isSuccess ? chalk.greenBright('MOVE') :
-                        chalk.bgRedBright('FAIL');
-
-            console.log(`\n${status}:`);
-            console.log(chalk.yellow(srcFilePath), '->');
-            console.log(chalk.yellowBright(outFilePath));
+        next({ srcFilePath, outFilePath, textChanged, pathChanged }) {
+            if (textChanged) {
+                console.log(`\n${chalk.greenBright('CHANGED')}:`);
+                console.log(chalk.yellow(srcFilePath));
+            }
+            else if (pathChanged) {
+                console.log(`\n${chalk.greenBright('MOVED')}:`);
+                console.log(chalk.yellow(srcFilePath), '->');
+                console.log(chalk.yellowBright(outFilePath));
+            }
+            else {
+                chalk.bgRedBright('FAIL');
+                console.log(chalk.yellow(srcFilePath), '->');
+                console.log(chalk.yellowBright(outFilePath));
+            }
         },
         complete() {
             console.log(`\n${chalk.bgCyan(chalk.bold(' FINISH '))}\n`);
