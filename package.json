@@ -1,6 +1,6 @@
 {
   "name": "@justerest/multi-replace",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "description": "Replaces text and filenames in the selected catalog preserving cases.",
   "keywords": [
     "replace",
