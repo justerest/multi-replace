@@ -16,7 +16,7 @@ multi_replace_files_1.multiReplaceFiles({ paths, searchValue, replaceValue })
     .subscribe({
     next({ srcFilePath, outFilePath, isSuccess }) {
         const status = isSuccess && srcFilePath === outFilePath ? chalk_1.default.greenBright('CHANGE') :
-            isSuccess ? chalk_1.default.greenBright('UPGRADE') :
+            isSuccess ? chalk_1.default.greenBright('MOVE') :
                 chalk_1.default.bgRedBright('FAIL');
         console.log(`\n${status}:`);
         console.log(chalk_1.default.yellow(srcFilePath), '->');

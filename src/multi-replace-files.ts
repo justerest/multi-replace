@@ -20,12 +20,12 @@ export function multiReplaceFiles({ paths, searchValue, replaceValue }: {
     const changes$ = getReplaceChanges({ paths, searchValue, replaceValue }).pipe(shareReplay());
 
     const textChanges$ = changes$.pipe(
-        filter(({ srcFilePath, outFilePath }) => srcFilePath !== outFilePath),
+        filter(({ srcText, outText }) => srcText !== outText),
         mergeSet('isSuccess', ({ outText, srcFilePath }) => toBoolean(writeFile(srcFilePath, outText))),
     );
 
     const filePathChanges$ = changes$.pipe(
-        filter(({ srcText, outText }) => srcText !== outText),
+        filter(({ srcFilePath, outFilePath }) => srcFilePath !== outFilePath),
         mergeSet('isSuccess', ({ srcFilePath, outFilePath }) => toBoolean(moveFile(srcFilePath, outFilePath))),
     );
 

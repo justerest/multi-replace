@@ -22,7 +22,7 @@ multiReplaceFiles({ paths, searchValue, replaceValue })
         next({ srcFilePath, outFilePath, isSuccess }) {
             const status =
                 isSuccess && srcFilePath === outFilePath ? chalk.greenBright('CHANGE') :
-                    isSuccess ? chalk.greenBright('UPGRADE') :
+                    isSuccess ? chalk.greenBright('MOVE') :
                         chalk.bgRedBright('FAIL');
 
             console.log(`\n${status}:`);
