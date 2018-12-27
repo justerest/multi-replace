@@ -1,23 +1,6 @@
-export { getReplaceChanges } from './getReplaceChanges';
-export { multiReplace } from './multiReplace';
-export { multiReplaceFilename } from './multiReplaceFilename';
-export declare function getMultiReplaceChanges({ paths, searchValue, replaceValue }: {
-    paths: string[];
-    searchValue: string;
-    replaceValue: string;
-}): import("rxjs").Observable<{
-    srcFilePath: string;
-    outFilePath: string;
-    srcText: string;
-    outText: string;
-}>;
-export declare function getStrictReplaceChanges({ paths, searchValue, replaceValue }: {
-    paths: string[];
-    searchValue: string;
-    replaceValue: string;
-}): import("rxjs").Observable<{
-    srcFilePath: string;
-    outFilePath: string;
-    srcText: string;
-    outText: string;
-}>;
+export { getFileList } from './get-file-list';
+export { getReplaceChanges } from './get-replace-changes';
+export { moveFile } from './move-file';
+export { multiReplaceFiles } from './multi-replace-files';
+export { multiReplace } from './multi-replace';
+export { replacePath } from './replace-path';

@@ -12,9 +12,7 @@ exports.getFileList = getFileList;
 function checkDir(path) {
     return rxjs_1.defer(async () => await fs_extra_1.pathExists(path) && (await fs_extra_1.lstat(path)).isDirectory());
 }
-exports.checkDir = checkDir;
 function globFiles(pattern) {
     const glob$ = rxjs_1.bindNodeCallback(glob);
     return glob$(pattern, { nodir: true }).pipe(operators_1.mergeAll(), operators_1.map((path) => path_1.resolve(path)));
 }
-exports.globFiles = globFiles;
