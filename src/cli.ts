@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import chalk from 'chalk';
 import commandLineArgs = require('command-line-args');
-import { multiReplaceFiles } from './multi-replace-files';
+import { multiReplaceFiles } from './core/multi-replace-files';
 
 const { paths, searchValue, replaceValue } = commandLineArgs([
     { name: 'paths', multiple: true, defaultOption: true, defaultValue: [] },
@@ -19,20 +19,20 @@ if (!paths.length || !searchValue || !replaceValue) {
 
 multiReplaceFiles({ paths, searchValue, replaceValue })
     .subscribe({
-        next({ srcFilePath, outFilePath, textChanged, pathChanged }) {
-            if (textChanged) {
+        next({ srcPath, outPath, outText, isSuccess }) {
+            if (isSuccess && outText) {
                 console.log(`\n${chalk.greenBright('CHANGED')}:`);
-                console.log(chalk.yellow(srcFilePath));
+                console.log(chalk.yellow(srcPath));
             }
-            else if (pathChanged) {
+            else if (isSuccess && outPath) {
                 console.log(`\n${chalk.greenBright('MOVED')}:`);
-                console.log(chalk.yellow(srcFilePath), '->');
-                console.log(chalk.yellowBright(outFilePath));
+                console.log(chalk.yellow(srcPath), '->');
+                console.log(chalk.yellowBright(outPath));
             }
             else {
                 chalk.bgRedBright('FAIL');
-                console.log(chalk.yellow(srcFilePath), '->');
-                console.log(chalk.yellowBright(outFilePath));
+                console.log(chalk.yellow(srcPath), '->');
+                console.log(chalk.yellowBright(outPath || ''));
             }
         },
         complete() {

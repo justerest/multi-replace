@@ -4,10 +4,9 @@ export declare function multiReplaceFiles({ paths, searchValue, replaceValue }: 
     searchValue: string;
     replaceValue: string;
 }): Observable<{
-    srcFilePath: string;
+    srcPath: string;
     srcText: string;
-    outFilePath: string;
-    outText: string;
-    textChanged?: boolean;
-    pathChanged?: boolean;
+    isSuccess: boolean;
+    outPath?: string;
+    outText?: string;
 }>;

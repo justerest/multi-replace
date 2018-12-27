@@ -1,14 +1,11 @@
 "use strict";
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
 Object.defineProperty(exports, "__esModule", { value: true });
-var get_file_list_1 = require("./get-file-list");
-exports.getFileList = get_file_list_1.getFileList;
-var get_replace_changes_1 = require("./get-replace-changes");
-exports.getReplaceChanges = get_replace_changes_1.getReplaceChanges;
-var move_file_1 = require("./move-file");
-exports.moveFile = move_file_1.moveFile;
-var multi_replace_files_1 = require("./multi-replace-files");
-exports.multiReplaceFiles = multi_replace_files_1.multiReplaceFiles;
-var multi_replace_1 = require("./multi-replace");
-exports.multiReplace = multi_replace_1.multiReplace;
-var replace_path_1 = require("./replace-path");
-exports.replacePath = replace_path_1.replacePath;
+__export(require("./core/get-file-list"));
+__export(require("./core/get-serialized-data"));
+__export(require("./core/move-file"));
+__export(require("./core/multi-replace-files"));
+__export(require("./core/multi-replace"));
+__export(require("./core/serialize-path"));
