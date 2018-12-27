@@ -13,6 +13,4 @@ export declare function multiReplace({ str, searchValue, replaceValue }: {
 }): string;
 export declare function multiSerialize(str: string, searchValue: string): string;
 export declare function multiDeserialize(str: string, replaceValue: string): string;
-export declare function deserializePath(serializedPath: string, replacePathValue: string): string;
-export declare function deserializePaths(serializedStr: string, replaceValue: string): string;
 export declare function isInCase(replaceValue: string): boolean;

@@ -39,14 +39,6 @@ export function multiDeserialize(str: string, replaceValue: string): string {
         .replace(new RegExp(CasePlaceholder.snake, 'g'), snakeCase(replaceValue));
 }
 
-export function deserializePath(serializedPath: string, replacePathValue: string): string {
-    return serializedPath.replace(new RegExp(anyCasePlaceholderPattern, 'g'), replacePathValue);
-}
-
-export function deserializePaths(serializedStr: string, replaceValue: string): string {
-    return serializedStr.replace(new RegExp(`/(${anyCasePlaceholderPattern})`, 'g'), `/${replaceValue}`);
-}
-
 export function isInCase(replaceValue: string) {
     return new RegExp(anyCasePlaceholderPattern).test(multiSerialize(replaceValue, replaceValue));
 }

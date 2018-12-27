@@ -35,14 +35,6 @@ function multiDeserialize(str, replaceValue) {
         .replace(new RegExp(CasePlaceholder.snake, 'g'), lodash_1.snakeCase(replaceValue));
 }
 exports.multiDeserialize = multiDeserialize;
-function deserializePath(serializedPath, replacePathValue) {
-    return serializedPath.replace(new RegExp(exports.anyCasePlaceholderPattern, 'g'), replacePathValue);
-}
-exports.deserializePath = deserializePath;
-function deserializePaths(serializedStr, replaceValue) {
-    return serializedStr.replace(new RegExp(`/(${exports.anyCasePlaceholderPattern})`, 'g'), `/${replaceValue}`);
-}
-exports.deserializePaths = deserializePaths;
 function isInCase(replaceValue) {
     return new RegExp(exports.anyCasePlaceholderPattern).test(multiSerialize(replaceValue, replaceValue));
 }

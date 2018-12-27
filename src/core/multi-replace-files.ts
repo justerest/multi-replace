@@ -6,7 +6,8 @@ import { filter, shareReplay } from 'rxjs/operators';
 import { toBoolean } from '../utils/to-boolean';
 import { getSerializedData } from './get-serialized-data';
 import { moveFile } from './move-file';
-import { deserializePath, deserializePaths, isInCase, multiDeserialize } from './multi-replace';
+import { isInCase, multiDeserialize } from './multi-replace';
+import { multiDeserializePath, multiDeserializePaths } from './multi-replace-path';
 
 export function multiReplaceFiles({ paths, searchValue, replaceValue }: {
     paths: string[];
@@ -27,14 +28,14 @@ export function multiReplaceFiles({ paths, searchValue, replaceValue }: {
 
     const textChanges$ = changes$.pipe(
         filter(({ srcText, serializedText }) => srcText !== serializedText),
-        set('serializedText', ({ serializedText }) => deserializePaths(serializedText, replaceValue)),
+        set('serializedText', ({ serializedText }) => multiDeserializePaths(serializedText, replaceValue)),
         set('outText', ({ serializedText }) => multiDeserialize(serializedText, replaceValue)),
         mergeSet('isSuccess', ({ outText, srcPath }) => toBoolean(writeFile(srcPath, outText))),
     );
 
     const filePathChanges$ = changes$.pipe(
         filter(({ srcPath, serializedPath }) => srcPath !== serializedPath),
-        set('outPath', ({ serializedPath }) => deserializePath(serializedPath, replaceValue)),
+        set('outPath', ({ serializedPath }) => multiDeserializePath(serializedPath, replaceValue)),
         mergeSet('isSuccess', ({ srcPath, outPath }) => toBoolean(moveFile(srcPath, outPath))),
     );
 
