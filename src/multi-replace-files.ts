@@ -2,8 +2,8 @@ import { writeFile } from 'fs-extra';
 import { concat, Observable } from 'rxjs';
 import { mergeSet } from 'rxjs-set-operators';
 import { filter, shareReplay } from 'rxjs/operators';
-import { moveFile } from 'src';
 import { getReplaceChanges } from './get-replace-changes';
+import { moveFile } from './move-file';
 import { toBoolean } from './utils/to-boolean';
 
 export function multiReplaceFiles({ paths, searchValue, replaceValue }: {
