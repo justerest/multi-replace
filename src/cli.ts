@@ -13,9 +13,7 @@ const { paths, searchValue, replaceValue } = commandLineArgs([
 	replaceValue: string;
 };
 
-if (!paths.length || !searchValue || !replaceValue) {
-	throw new Error('Bad params');
-}
+checkParams();
 
 multiReplaceFiles({ paths, searchValue, replaceValue })
 	.subscribe({
@@ -39,3 +37,9 @@ multiReplaceFiles({ paths, searchValue, replaceValue })
 			console.log(`\n${chalk.bgCyan(chalk.bold(' FINISH '))}\n`);
 		},
 	});
+
+function checkParams() {
+	if (!paths.length || !searchValue || !replaceValue) {
+		throw new Error('Bad params');
+	}
+}

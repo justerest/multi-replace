@@ -9,9 +9,7 @@ const { paths, searchValue, replaceValue } = commandLineArgs([
     { name: 'searchValue', alias: 's', type: String },
     { name: 'replaceValue', alias: 'r', type: String },
 ]);
-if (!paths.length || !searchValue || !replaceValue) {
-    throw new Error('Bad params');
-}
+checkParams();
 multi_replace_files_1.multiReplaceFiles({ paths, searchValue, replaceValue })
     .subscribe({
     next({ srcPath, outPath, outText, isSuccess }) {
@@ -34,3 +32,8 @@ multi_replace_files_1.multiReplaceFiles({ paths, searchValue, replaceValue })
         console.log(`\n${chalk_1.default.bgCyan(chalk_1.default.bold(' FINISH '))}\n`);
     },
 });
+function checkParams() {
+    if (!paths.length || !searchValue || !replaceValue) {
+        throw new Error('Bad params');
+    }
+}
