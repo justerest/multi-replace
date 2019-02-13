@@ -5,6 +5,7 @@
   ],
   "jsRules": {},
   "rules": {
+    "indent": [true, "tabs", 2],
     "curly": false,
     "interface-name": false,
     "member-access": [true, "no-public"],

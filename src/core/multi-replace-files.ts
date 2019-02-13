@@ -10,34 +10,34 @@ import { isInCase, multiDeserialize } from './multi-replace';
 import { multiDeserializePath, multiDeserializePaths } from './multi-replace-path';
 
 export function multiReplaceFiles({ paths, searchValue, replaceValue }: {
-    paths: string[];
-    searchValue: string;
-    replaceValue: string;
+	paths: string[];
+	searchValue: string;
+	replaceValue: string;
 }): Observable<{
-    srcPath: string;
-    srcText: string;
-    isSuccess: boolean;
-    outPath?: string;
-    outText?: string;
+	srcPath: string;
+	srcText: string;
+	isSuccess: boolean;
+	outPath?: string;
+	outText?: string;
 }> {
-    if (!isInCase(replaceValue)) {
-        replaceValue = kebabCase(replaceValue);
-    }
+	if (!isInCase(replaceValue)) {
+		replaceValue = kebabCase(replaceValue);
+	}
 
-    const changes$ = getSerializedData({ paths, searchValue }).pipe(shareReplay());
+	const changes$ = getSerializedData({ paths, searchValue }).pipe(shareReplay());
 
-    const textChanges$ = changes$.pipe(
-        filter(({ srcText, serializedText }) => srcText !== serializedText),
-        set('serializedText', ({ serializedText }) => multiDeserializePaths(serializedText, replaceValue)),
-        set('outText', ({ serializedText }) => multiDeserialize(serializedText, replaceValue)),
-        mergeSet('isSuccess', ({ outText, srcPath }) => toBoolean(writeFile(srcPath, outText))),
-    );
+	const textChanges$ = changes$.pipe(
+		filter(({ srcText, serializedText }) => srcText !== serializedText),
+		set('serializedText', ({ serializedText }) => multiDeserializePaths(serializedText, replaceValue)),
+		set('outText', ({ serializedText }) => multiDeserialize(serializedText, replaceValue)),
+		mergeSet('isSuccess', ({ outText, srcPath }) => toBoolean(writeFile(srcPath, outText))),
+	);
 
-    const filePathChanges$ = changes$.pipe(
-        filter(({ srcPath, serializedPath }) => srcPath !== serializedPath),
-        set('outPath', ({ serializedPath }) => multiDeserializePath(serializedPath, replaceValue)),
-        mergeSet('isSuccess', ({ srcPath, outPath }) => toBoolean(moveFile(srcPath, outPath))),
-    );
+	const filePathChanges$ = changes$.pipe(
+		filter(({ srcPath, serializedPath }) => srcPath !== serializedPath),
+		set('outPath', ({ serializedPath }) => multiDeserializePath(serializedPath, replaceValue)),
+		mergeSet('isSuccess', ({ srcPath, outPath }) => toBoolean(moveFile(srcPath, outPath))),
+	);
 
-    return concat(textChanges$, filePathChanges$);
+	return concat(textChanges$, filePathChanges$);
 }

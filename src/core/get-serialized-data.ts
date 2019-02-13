@@ -9,21 +9,21 @@ import { multiSerialize } from './multi-replace';
 import { multiSerializePath } from './multi-replace-path';
 
 export function getSerializedData({ paths, searchValue }: {
-    paths: string[];
-    searchValue: string;
+	paths: string[];
+	searchValue: string;
 }): Observable<{
-    srcPath: string;
-    srcText: string;
-    serializedPath: string;
-    serializedText: string;
+	srcPath: string;
+	srcText: string;
+	serializedPath: string;
+	serializedText: string;
 }> {
-    return from(paths).pipe(
-        setAll('basePath'),
-        mergeSet('srcPath', ({ basePath }) => getFileList(basePath)),
-        filterUnique(({ srcPath }) => srcPath),
-        mergeSet('srcText', ({ srcPath }) => readFile(srcPath, 'UTF-8')),
-        set('serializedPath', ({ basePath, srcPath }) => multiSerializePath({ basePath, srcPath, searchValue })),
-        set('serializedText', ({ srcText }) => multiSerialize(srcText, searchValue)),
-        filter(({ srcText, serializedText, srcPath, serializedPath }) => srcText !== serializedText || srcPath !== serializedPath),
-    );
+	return from(paths).pipe(
+		setAll('basePath'),
+		mergeSet('srcPath', ({ basePath }) => getFileList(basePath)),
+		filterUnique(({ srcPath }) => srcPath),
+		mergeSet('srcText', ({ srcPath }) => readFile(srcPath, 'UTF-8')),
+		set('serializedPath', ({ basePath, srcPath }) => multiSerializePath({ basePath, srcPath, searchValue })),
+		set('serializedText', ({ srcText }) => multiSerialize(srcText, searchValue)),
+		filter(({ srcText, serializedText, srcPath, serializedPath }) => srcText !== serializedText || srcPath !== serializedPath),
+	);
 }
