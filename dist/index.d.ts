@@ -1,6 +1,3 @@
-export * from './core/get-file-list';
-export * from './core/get-serialized-data';
-export * from './core/move-file';
-export * from './core/multi-replace-files';
-export * from './core/multi-replace-path';
-export * from './core/multi-replace';
+export * from './core/multi-replacer';
+export * from './core/string-transformer';
+export declare const multiReplace: (paths: string[], searchValue: string, replaceValue: string) => import("rxjs").Observable<import("./core/multi-replacer").ChangedFileData>;

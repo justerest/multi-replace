@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 import chalk from 'chalk';
 import commandLineArgs = require('command-line-args');
-import { multiReplaceFiles } from './core/multi-replace-files';
+
+import { multiReplace } from './index';
 
 const { paths, searchValue, replaceValue } = commandLineArgs([
 	{ name: 'paths', multiple: true, defaultOption: true, defaultValue: [] },
@@ -13,33 +14,23 @@ const { paths, searchValue, replaceValue } = commandLineArgs([
 	replaceValue: string;
 };
 
-checkParams();
-
-multiReplaceFiles({ paths, searchValue, replaceValue })
-	.subscribe({
-		next({ srcPath, outPath, outText, isSuccess }) {
-			if (isSuccess && outText) {
-				console.log(`\n${chalk.greenBright('CHANGED')}:`);
-				console.log(chalk.yellow(srcPath));
-			}
-			else if (isSuccess && outPath) {
-				console.log(`\n${chalk.greenBright('MOVED')}:`);
-				console.log(chalk.yellow(srcPath), '->');
-				console.log(chalk.yellowBright(outPath));
-			}
-			else {
-				chalk.bgRedBright('FAIL');
-				console.log(chalk.yellow(srcPath), '->');
-				console.log(chalk.yellowBright(outPath || ''));
-			}
-		},
-		complete() {
-			console.log(`\n${chalk.bgCyan(chalk.bold(' FINISH '))}\n`);
-		},
-	});
-
-function checkParams() {
-	if (!paths.length || !searchValue || !replaceValue) {
-		throw new Error('Bad params');
-	}
+if (!paths.length || !searchValue || !replaceValue) {
+	throw new Error('Bad params');
 }
+
+multiReplace(paths, searchValue, replaceValue).subscribe({
+	next({ srcPath, srcText, outPath, outText }) {
+		if (srcText !== outText) {
+			console.log(`\n${chalk.greenBright('CHANGED')}:`);
+			console.log(chalk.yellow(srcPath));
+		}
+		if (srcPath !== outPath) {
+			console.log(`\n${chalk.greenBright('MOVED')}:`);
+			console.log(chalk.yellow(srcPath), '->');
+			console.log(chalk.yellowBright(outPath));
+		}
+	},
+	complete() {
+		console.log(`\n${chalk.bgCyan(chalk.bold(' FINISH '))}\n`);
+	},
+});
