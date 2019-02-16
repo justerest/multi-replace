@@ -1,59 +1,65 @@
 {
-	"name": "@justerest/multi-replace",
-	"version": "1.4.1",
-	"description": "Replaces text and filenames in the selected catalog preserving cases.",
-	"keywords": [
-		"replace",
-		"rename",
-		"files",
-		"filename",
-		"angular",
-		"component"
-	],
-	"private": false,
-	"bin": {
-		"multi-replace": "dist/cli.js"
-	},
-	"main": "dist/index.js",
-	"scripts": {
-		"build": "rm -R ./dist && tsc -p .",
-		"build:commit": "npm run build && git add ./dist",
-		"start": "node dist/cli.js",
-		"start:dev": "npm run build && npm start",
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
-	"husky": {
-		"hooks": {
-			"pre-commit": "npm run build"
-		}
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/justerest/multi-replace.git"
-	},
-	"author": "justerest",
-	"license": "MIT",
-	"bugs": {
-		"url": "https://github.com/justerest/multi-replace/issues"
-	},
-	"homepage": "https://github.com/justerest/multi-replace#readme",
-	"dependencies": {
-		"chalk": "^2.4.2",
-		"command-line-args": "^5.0.2",
-		"fs-extra": "^7.0.1",
-		"glob": "^7.1.3",
-		"lodash": "^4.17.11",
-		"rxjs": "^6.4.0",
-		"rxjs-set-operators": "^0.2.0"
-	},
-	"devDependencies": {
-		"@types/command-line-args": "^5.0.0",
-		"@types/fs-extra": "^5.0.5",
-		"@types/glob": "^7.1.1",
-		"@types/lodash": "^4.14.120",
-		"@types/node": "^11.9.3",
-		"husky": "^1.3.1",
-		"tslint": "^5.12.1",
-		"typescript": "^3.3.3"
-	}
+  "name": "@justerest/multi-replace",
+  "version": "1.4.1",
+  "description": "Replaces text and filenames in the selected catalog preserving cases.",
+  "keywords": [
+    "replace",
+    "rename",
+    "files",
+    "filename",
+    "angular",
+    "component"
+  ],
+  "private": false,
+  "bin": {
+    "multi-replace": "dist/cli.js"
+  },
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "rimraf dist && tsc -p .",
+    "build:commit": "npm run build && git add ./dist && git commit -m \"chore: build\"",
+    "start": "node dist/cli.js",
+    "start:dev": "npm run build && npm start",
+    "test": "jest"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run build:commit"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/justerest/multi-replace.git"
+  },
+  "author": "justerest",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/justerest/multi-replace/issues"
+  },
+  "homepage": "https://github.com/justerest/multi-replace#readme",
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "command-line-args": "^5.0.2",
+    "fs-extra": "^7.0.1",
+    "glob": "^7.1.3",
+    "lodash": "^4.17.11",
+    "rxjs": "^6.4.0",
+    "rxjs-set-operators": "^0.2.0",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "@types/command-line-args": "^5.0.0",
+    "@types/fs-extra": "^5.0.5",
+    "@types/glob": "^7.1.1",
+    "@types/jest": "^24.0.5",
+    "@types/lodash": "4.14.120",
+    "@types/node": "^11.9.4",
+    "@types/uuid": "^3.4.4",
+    "husky": "^1.3.1",
+    "jest": "^24.1.0",
+    "rimraf": "^2.6.3",
+    "ts-jest": "^23.10.5",
+    "tslint": "^5.12.1",
+    "typescript": "^3.3.3"
+  }
 }

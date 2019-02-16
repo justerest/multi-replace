@@ -1,6 +1,7 @@
-export * from './core/get-file-list';
-export * from './core/get-serialized-data';
-export * from './core/move-file';
-export * from './core/multi-replace-files';
-export * from './core/multi-replace-path';
-export * from './core/multi-replace';
+import { MultiReplacer } from './core/multi-replacer';
+
+export * from './core/multi-replacer';
+export * from './core/string-transformer';
+
+const multiReplacer = new MultiReplacer();
+export const multiReplace = multiReplacer.multiReplace.bind(multiReplacer);

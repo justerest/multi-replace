@@ -3,9 +3,8 @@ function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 }
 Object.defineProperty(exports, "__esModule", { value: true });
-__export(require("./core/get-file-list"));
-__export(require("./core/get-serialized-data"));
-__export(require("./core/move-file"));
-__export(require("./core/multi-replace-files"));
-__export(require("./core/multi-replace-path"));
-__export(require("./core/multi-replace"));
+const multi_replacer_1 = require("./core/multi-replacer");
+__export(require("./core/multi-replacer"));
+__export(require("./core/string-transformer"));
+const multiReplacer = new multi_replacer_1.MultiReplacer();
+exports.multiReplace = multiReplacer.multiReplace.bind(multiReplacer);

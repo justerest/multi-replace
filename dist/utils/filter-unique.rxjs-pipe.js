@@ -1,6 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const operators_1 = require("rxjs/operators");
+/**
+ * RxJs pipable operator.
+ */
 function filterUnique(fn = (data) => data) {
     const cache = new Set();
     return operators_1.filter((data) => {
