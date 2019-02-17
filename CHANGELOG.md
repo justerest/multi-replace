@@ -2,26 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-# [2.0.0](https://github.com/justerest/multi-replace/compare/v1.4.0...v2.0.0) (2019-02-17)
-
-
-### Code Refactoring
-
-* oop style, init tests ([ae5f7be](https://github.com/justerest/multi-replace/commit/ae5f7be))
-
-
-### BREAKING CHANGES
-
-* API
-
-
-
-## 1.4.1 (2019-02-08)
+## [2.0.1](https://github.com/justerest/multi-replace/compare/v2.0.0...v2.0.1) (2019-02-17)
 
 
 ### Bug Fixes
 
-* filter unique paths ([9b3e818](https://github.com/justerest/multi-replace/commit/9b3e818))
+* missed module ([5ca87ed](https://github.com/justerest/multi-replace/commit/5ca87ed))
 
 
 
