@@ -29,3 +29,5 @@ class MainService {
     }
 }
 exports.MainService = MainService;
+const mainService = new MainService();
+exports.multiReplace = mainService.multiReplace.bind(mainService);
