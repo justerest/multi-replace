@@ -7,7 +7,7 @@ const path_1 = require("path");
 const filter_unique_rxjs_pipe_1 = require("../utils/filter-unique.rxjs-pipe");
 const file_system_service_1 = require("./file-system-service");
 const string_transformer_1 = require("./string-transformer");
-class MultiReplacer {
+class MainService {
     constructor(stringTransformer = new string_transformer_1.StringTransformer(), fileSystemService = new file_system_service_1.FileSystemService()) {
         this.stringTransformer = stringTransformer;
         this.fileSystemService = fileSystemService;
@@ -28,4 +28,4 @@ class MultiReplacer {
         return srcText !== outText || srcPath !== outPath;
     }
 }
-exports.MultiReplacer = MultiReplacer;
+exports.MainService = MainService;
