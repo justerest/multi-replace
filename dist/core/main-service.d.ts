@@ -10,7 +10,7 @@ export interface ChangedFileData extends FileData {
     outPath: string;
     outText: string;
 }
-export declare class MultiReplacer {
+export declare class MainService {
     private stringTransformer;
     private fileSystemService;
     constructor(stringTransformer?: StringTransformer, fileSystemService?: FileSystemService);
