@@ -17,15 +17,10 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "rimraf dist && tsc -p .",
-    "build:commit": "npm run build && git add ./dist && git commit -m \"chore: build\"",
     "start": "node dist/cli.js",
     "start:dev": "npm run build && npm start",
-    "test": "jest"
-  },
-  "husky": {
-    "hooks": {
-      "pre-push": "npm run build:commit"
-    }
+    "test": "jest",
+    "release": "npm run build && git add dist && (git diff-index --quiet HEAD || git commit -zm \"chore: build\") && standard-version"
   },
   "repository": {
     "type": "git",
@@ -55,9 +50,9 @@
     "@types/lodash": "4.14.120",
     "@types/node": "^11.9.4",
     "@types/uuid": "^3.4.4",
-    "husky": "^1.3.1",
     "jest": "^24.1.0",
     "rimraf": "^2.6.3",
+    "standard-version": "^5.0.0",
     "ts-jest": "^23.10.5",
     "tslint": "^5.12.1",
     "typescript": "^3.3.3"
