@@ -1,7 +1,7 @@
-import { MultiReplacer } from './core/multi-replacer';
+import { MainService } from './core/main-service';
 
-export * from './core/multi-replacer';
+export * from './core/main-service';
 export * from './core/string-transformer';
 
-const multiReplacer = new MultiReplacer();
-export const multiReplace = multiReplacer.multiReplace.bind(multiReplacer);
+const mainService = new MainService();
+export const multiReplace = mainService.multiReplace.bind(mainService);

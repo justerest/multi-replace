@@ -18,7 +18,7 @@ export interface ChangedFileData extends FileData {
 	outText: string;
 }
 
-export class MultiReplacer {
+export class MainService {
 
 	constructor(
 		private stringTransformer = new StringTransformer(),
