@@ -1,2 +1,3 @@
-export * from './core/string-transformer';
-export * from './core/main-service';
+export * from './file-system-service';
+export * from './string-transformer';
+export * from './main-service';

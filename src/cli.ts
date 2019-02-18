@@ -2,7 +2,7 @@
 import chalk from 'chalk';
 import commandLineArgs = require('command-line-args');
 
-import { multiReplace } from './core/main-service';
+import { multiReplace } from './main-service';
 
 const { paths, searchValue, replaceValue } = commandLineArgs([
 	{ name: 'paths', multiple: true, defaultOption: true, defaultValue: [] },

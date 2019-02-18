@@ -20,7 +20,8 @@
     "start": "node dist/cli.js",
     "start:dev": "npm run build && npm start",
     "test": "jest",
-    "release": "npm run build && git add dist && (git diff-index --quiet HEAD || git commit -zm \"chore: build\") && standard-version"
+    "build:commit": "npm run build && git add dist && git commit -m \"chore: build\"",
+    "release": "standard-version"
   },
   "repository": {
     "type": "git",

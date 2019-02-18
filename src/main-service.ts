@@ -1,11 +1,11 @@
+import { basename, dirname, relative, resolve } from 'path';
 import { from, Observable } from 'rxjs';
 import { mergeSet, mergeTap, set, setAll } from 'rxjs-set-operators';
 import { filter, mergeAll } from 'rxjs/operators';
 
-import { relative, resolve } from 'path';
-import { filterUnique } from '../utils/filter-unique.rxjs-pipe';
 import { FileSystemService } from './file-system-service';
 import { StringTransformer } from './string-transformer';
+import { filterUnique } from './utils/filter-unique.rxjs-pipe';
 
 interface FileData {
 	basePath: string;
@@ -46,11 +46,17 @@ export class MainService {
 		);
 	}
 
-	private replacePath(fileData: FileData, searchValue: string, replaceValue: string) {
+	private replacePath(fileData: FileData, searchValue: string, replaceValue: string): string {
 		const { srcPath, basePath } = fileData;
 		const relativePath = relative(basePath, srcPath);
-		const path = this.stringTransformer.replace(relativePath, searchValue, replaceValue);
-		return resolve(basePath, path);
+		if (relativePath) {
+			const path = this.stringTransformer.replace(relativePath, searchValue, replaceValue);
+			return resolve(basePath, path);
+		}
+		const filename = basename(srcPath);
+		const dir = dirname(srcPath);
+		const changedFilename = this.stringTransformer.replace(filename, searchValue, replaceValue);
+		return resolve(dir, changedFilename);
 	}
 
 	private hasFileChanges({ srcText, outText, srcPath, outPath }: ChangedFileData): boolean {

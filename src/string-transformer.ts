@@ -1,7 +1,7 @@
 import { camelCase, kebabCase, snakeCase } from 'lodash';
 
-import { constantCase } from '../utils/constant-case';
-import { pascalCase } from '../utils/pascal-case';
+import { constantCase } from './utils/constant-case';
+import { pascalCase } from './utils/pascal-case';
 
 type CaseTransformer = (str: string) => string;
 
