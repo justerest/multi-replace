@@ -2,12 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## [2.0.1](https://github.com/justerest/multi-replace/compare/v2.0.0...v2.0.1) (2019-02-17)
+## [2.0.2](https://github.com/justerest/multi-replace/compare/v2.0.1...v2.0.2) (2019-02-18)
 
 
 ### Bug Fixes
 
-* missed module ([5ca87ed](https://github.com/justerest/multi-replace/commit/5ca87ed))
+* npm ignore core folder ([835f1e0](https://github.com/justerest/multi-replace/commit/835f1e0))
 
 
 
