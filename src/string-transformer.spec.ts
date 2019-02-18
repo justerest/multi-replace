@@ -13,8 +13,7 @@ describe('StringTransformer', () => {
 
 	describe('replaceText', () => {
 		it('should replace preserving cases', () => {
-			const result = stringTransformer.replace('testText', 'testText', 'text-test');
-			expect(result).toBe('textTest');
+			expect(stringTransformer.replace('searchValue', 'search_value', 'replace-value')).toBe('replaceValue');
 		});
 	});
 });
