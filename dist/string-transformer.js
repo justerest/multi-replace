@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const lodash_1 = require("lodash");
-const constant_case_1 = require("../utils/constant-case");
-const pascal_case_1 = require("../utils/pascal-case");
+const constant_case_1 = require("./utils/constant-case");
+const pascal_case_1 = require("./utils/pascal-case");
 class StringTransformer {
     constructor(caseTransformers = [
         lodash_1.camelCase,

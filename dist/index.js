@@ -3,5 +3,6 @@ function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 }
 Object.defineProperty(exports, "__esModule", { value: true });
-__export(require("./core/string-transformer"));
-__export(require("./core/main-service"));
+__export(require("./file-system-service"));
+__export(require("./string-transformer"));
+__export(require("./main-service"));

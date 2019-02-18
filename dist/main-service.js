@@ -1,12 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const path_1 = require("path");
 const rxjs_1 = require("rxjs");
 const rxjs_set_operators_1 = require("rxjs-set-operators");
 const operators_1 = require("rxjs/operators");
-const path_1 = require("path");
-const filter_unique_rxjs_pipe_1 = require("../utils/filter-unique.rxjs-pipe");
 const file_system_service_1 = require("./file-system-service");
 const string_transformer_1 = require("./string-transformer");
+const filter_unique_rxjs_pipe_1 = require("./utils/filter-unique.rxjs-pipe");
 class MainService {
     constructor(stringTransformer = new string_transformer_1.StringTransformer(), fileSystemService = new file_system_service_1.FileSystemService()) {
         this.stringTransformer = stringTransformer;
@@ -21,8 +21,14 @@ class MainService {
     replacePath(fileData, searchValue, replaceValue) {
         const { srcPath, basePath } = fileData;
         const relativePath = path_1.relative(basePath, srcPath);
-        const path = this.stringTransformer.replace(relativePath, searchValue, replaceValue);
-        return path_1.resolve(basePath, path);
+        if (relativePath) {
+            const path = this.stringTransformer.replace(relativePath, searchValue, replaceValue);
+            return path_1.resolve(basePath, path);
+        }
+        const filename = path_1.basename(srcPath);
+        const dir = path_1.dirname(srcPath);
+        const changedFilename = this.stringTransformer.replace(filename, searchValue, replaceValue);
+        return path_1.resolve(dir, changedFilename);
     }
     hasFileChanges({ srcText, outText, srcPath, outPath }) {
         return srcText !== outText || srcPath !== outPath;

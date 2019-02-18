@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const chalk_1 = require("chalk");
 const commandLineArgs = require("command-line-args");
-const main_service_1 = require("./core/main-service");
+const main_service_1 = require("./main-service");
 const { paths, searchValue, replaceValue } = commandLineArgs([
     { name: 'paths', multiple: true, defaultOption: true, defaultValue: [] },
     { name: 'searchValue', alias: 's', type: String },
