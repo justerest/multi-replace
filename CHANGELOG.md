@@ -2,12 +2,7 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-# [2.1.0](https://github.com/justerest/multi-replace/compare/v2.0.2...v2.1.0) (2019-02-22)
-
-
-### Features
-
-* support angular case (example: user.service -> super-user.service) ([090cea3](https://github.com/justerest/multi-replace/commit/090cea3))
+## [2.1.1](https://github.com/justerest/multi-replace/compare/v2.1.0...v2.1.1) (2019-02-22)
 
 
 
