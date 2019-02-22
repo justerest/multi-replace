@@ -15,5 +15,8 @@ describe('StringTransformer', () => {
 		it('should replace preserving cases', () => {
 			expect(stringTransformer.replace('searchValue', 'search_value', 'replace-value')).toBe('replaceValue');
 		});
+		it('should replace angular case', () => {
+			expect(stringTransformer.replace('user.service', 'user service', 'currentUserService')).toBe('current-user.service');
+		});
 	});
 });

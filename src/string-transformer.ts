@@ -1,5 +1,6 @@
 import { camelCase, kebabCase, snakeCase } from 'lodash';
 
+import { angularCase } from './utils/angular-case';
 import { constantCase } from './utils/constant-case';
 import { pascalCase } from './utils/pascal-case';
 
@@ -9,11 +10,12 @@ export class StringTransformer {
 
 	constructor(
 		private caseTransformers: CaseTransformer[] = [
-			camelCase,
+			angularCase,
 			constantCase,
 			kebabCase,
 			pascalCase,
 			snakeCase,
+			camelCase,
 		],
 	) { }
 
