@@ -1,15 +1,17 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const lodash_1 = require("lodash");
+const angular_case_1 = require("./utils/angular-case");
 const constant_case_1 = require("./utils/constant-case");
 const pascal_case_1 = require("./utils/pascal-case");
 class StringTransformer {
     constructor(caseTransformers = [
-        lodash_1.camelCase,
+        angular_case_1.angularCase,
         constant_case_1.constantCase,
         lodash_1.kebabCase,
         pascal_case_1.pascalCase,
         lodash_1.snakeCase,
+        lodash_1.camelCase,
     ]) {
         this.caseTransformers = caseTransformers;
     }
