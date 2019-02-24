@@ -1,7 +1,7 @@
 import { kebabCase } from 'lodash';
 import { StringTransformer } from './string-transformer';
 
-describe('StringTransformer', () => {
+describe('class StringTransformer', () => {
 	let stringTransformer: StringTransformer;
 
 	beforeEach(() => {
@@ -12,7 +12,7 @@ describe('StringTransformer', () => {
 		expect(stringTransformer).toBeTruthy();
 	});
 
-	describe('replaceText', () => {
+	describe('method replaceText', () => {
 		it('should replace preserving cases', () => {
 			expect(stringTransformer.replace('searchValue', 'search_value', 'replace-value')).toBe('replaceValue');
 		});
@@ -28,6 +28,11 @@ describe('StringTransformer', () => {
 		it('should use default transformer if not indetify', () => {
 			stringTransformer = new StringTransformer(void 0, kebabCase);
 			expect(stringTransformer.replace('user', 'user', 'currentUser')).toBe('current-user');
+		});
+
+		it('should replace without preserving case', () => {
+			stringTransformer = new StringTransformer([(str) => str]);
+			expect(stringTransformer.replace('user', 'user', 'an-animal_case')).toBe('an-animal_case');
 		});
 	});
 });

@@ -64,6 +64,3 @@ export class MainService {
 	}
 
 }
-
-const mainService = new MainService();
-export const multiReplace = mainService.multiReplace.bind(mainService);

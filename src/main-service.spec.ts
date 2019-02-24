@@ -4,7 +4,7 @@ import { resolve } from 'path';
 import { FileSystemService } from './file-system-service';
 import { MainService } from './main-service';
 
-describe('MainService', () => {
+describe('class MainService', () => {
 	let mainService: MainService;
 	let mockFileService: FileSystemService;
 
@@ -19,7 +19,7 @@ describe('MainService', () => {
 		expect(mainService).toBeTruthy();
 	});
 
-	describe('multiReplace', () => {
+	describe('method multiReplace', () => {
 		it('should replace file text', (complete) => {
 			expect.assertions(1);
 			mainService.getFilesData = () => of({ basePath: '', srcPath: '', srcText: 'search-text' });
