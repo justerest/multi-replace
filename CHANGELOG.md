@@ -1,3 +1,17 @@
+# Change Log
+
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+# [2.2.0](https://github.com/justerest/multi-replace/compare/v2.1.1...v2.2.0) (2019-02-24)
+
+
+### Features
+
+* add multiReplaceStrict function ([7574907](https://github.com/justerest/multi-replace/commit/7574907))
+* **string-transformer:** add default transformer param ([e4e2817](https://github.com/justerest/multi-replace/commit/e4e2817))
+
+
+
 ## [2.1.1](https://github.com/justerest/multi-replace/compare/v2.1.0...v2.1.1) (2019-02-22)
 
 
@@ -121,6 +135,3 @@
 
 
 # 1.0.0 (2018-12-23)
-
-
-
