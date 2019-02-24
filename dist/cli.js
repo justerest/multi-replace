@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const chalk_1 = require("chalk");
 const commandLineArgs = require("command-line-args");
-const main_service_1 = require("./main-service");
+const index_1 = require("./index");
 const { paths, searchValue, replaceValue } = commandLineArgs([
     { name: 'paths', multiple: true, defaultOption: true, defaultValue: [] },
     { name: 'searchValue', alias: 's', type: String },
@@ -12,7 +12,7 @@ const { paths, searchValue, replaceValue } = commandLineArgs([
 if (!paths.length || !searchValue || !replaceValue) {
     throw new Error('Bad params');
 }
-main_service_1.multiReplace(paths, searchValue, replaceValue).subscribe({
+index_1.multiReplace(paths, searchValue, replaceValue).subscribe({
     next({ srcPath, srcText, outPath, outText }) {
         if (srcText !== outText) {
             console.log(`\n${chalk_1.default.greenBright('CHANGED')}:`);

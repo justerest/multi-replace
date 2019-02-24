@@ -1,8 +1,10 @@
 declare type CaseTransformer = (str: string) => string;
 export declare class StringTransformer {
     private caseTransformers;
-    constructor(caseTransformers?: CaseTransformer[]);
+    private defaultTransformer;
+    constructor(caseTransformers?: CaseTransformer[], defaultTransformer?: CaseTransformer);
     replace(sourceString: string, searchValue: string, replaceValue: string): string;
     private getReplaceMap;
+    private setDefaultTransformer;
 }
 export {};

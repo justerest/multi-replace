@@ -19,5 +19,4 @@ export declare class MainService {
     private replacePath;
     private hasFileChanges;
 }
-export declare const multiReplace: (paths: string[], searchValue: string, replaceValue: string) => Observable<ChangedFileData>;
 export {};
