@@ -1,4 +1,5 @@
 declare type CaseTransformer = (str: string) => string;
+export declare const defaultTransformers: ((string?: string | undefined) => string)[];
 export declare class StringTransformer {
     private caseTransformers;
     private defaultTransformer;

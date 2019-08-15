@@ -1,4 +1,5 @@
 import { Observable } from 'rxjs';
+import { FilePathTransformer } from './file-path-transformer';
 import { FileSystemService } from './file-system-service';
 import { StringTransformer } from './string-transformer';
 interface FileData {
@@ -13,10 +14,10 @@ export interface ChangedFileData extends FileData {
 export declare class MainService {
     private stringTransformer;
     private fileSystemService;
-    constructor(stringTransformer?: StringTransformer, fileSystemService?: FileSystemService);
+    private filePathTransformer;
+    constructor(stringTransformer?: StringTransformer, fileSystemService?: FileSystemService, filePathTransformer?: FilePathTransformer);
     multiReplace(paths: string[], searchValue: string, replaceValue: string): Observable<ChangedFileData>;
     getFilesData(paths: string[]): Observable<FileData>;
-    private replacePath;
     private hasFileChanges;
 }
 export {};
