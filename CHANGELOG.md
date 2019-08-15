@@ -1,6 +1,13 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [2.3.0](https://github.com/justerest/multi-replace/compare/v2.2.1...v2.3.0) (2019-08-15)
+
+
+### Features
+
+* dir file path transformer to transform base dir ([a6db9f1](https://github.com/justerest/multi-replace/commit/a6db9f1))
 
 ## [2.2.1](https://github.com/justerest/multi-replace/compare/v2.2.0...v2.2.1) (2019-02-24)
 
