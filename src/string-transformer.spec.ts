@@ -1,4 +1,5 @@
 import { kebabCase } from 'lodash';
+
 import { StringTransformer } from './string-transformer';
 
 describe('class StringTransformer', () => {
@@ -18,7 +19,9 @@ describe('class StringTransformer', () => {
 		});
 
 		it('should replace angular case', () => {
-			expect(stringTransformer.replace('user.service', 'user service', 'currentUserService')).toBe('current-user.service');
+			expect(stringTransformer.replace('user.service', 'user service', 'currentUserService')).toBe(
+				'current-user.service',
+			);
 		});
 
 		it('should camelCase if not indetify', () => {
