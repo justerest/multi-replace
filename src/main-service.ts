@@ -4,6 +4,7 @@ import { filter, mergeAll } from 'rxjs/operators';
 
 import { FilePathTransformer } from './file-path-transformer';
 import { FileSystemService } from './file-system-service';
+import { StrictFilePathTransformer } from './strict-file-path-transformer';
 import { StringTransformer } from './string-transformer';
 import { filterUnique } from './utils/filter-unique.rxjs-pipe';
 
@@ -22,7 +23,7 @@ export class MainService {
 	constructor(
 		private stringTransformer = new StringTransformer(),
 		private fileSystemService = new FileSystemService(),
-		private filePathTransformer = new FilePathTransformer(stringTransformer),
+		private filePathTransformer: FilePathTransformer = new StrictFilePathTransformer(stringTransformer),
 	) {}
 
 	multiReplace(paths: string[], searchValue: string, replaceValue: string): Observable<ChangedFileData> {

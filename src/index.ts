@@ -4,6 +4,8 @@ import { StringTransformer } from './string-transformer';
 export * from './file-system-service';
 export * from './string-transformer';
 export * from './main-service';
+export * from './dir-file-path-transformer';
+export * from './strict-file-path-transformer';
 
 const mainService = new MainService();
 const mainServiceStrict = new MainService(new StringTransformer([(str) => str]));
