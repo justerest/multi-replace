@@ -1,8 +1,6 @@
-import glob = require('glob');
-import { resolve } from 'path';
-import { bindNodeCallback, from, Observable, of } from 'rxjs';
+import { from, Observable, of } from 'rxjs';
 import { mergeSet } from 'rxjs-set-operators';
-import { concatMap, filter, map, mergeAll, mergeMap, take } from 'rxjs/operators';
+import { mergeAll, mergeMap } from 'rxjs/operators';
 
 import { FileSystemServiceImp } from './file-system-service-imp';
 import { FileSystemService } from './models/file-system-service';
@@ -25,13 +23,7 @@ export class FilesParserImp implements FilesParser {
 		);
 	}
 
-	protected getFilesAtFolder(sourcePath: string): Observable<string> {
-		return of(sourcePath, `${sourcePath}/**`).pipe(
-			concatMap((pattern) => bindNodeCallback<string, glob.IOptions, string[]>(glob)(pattern, { nodir: true })),
-			filter((paths) => !!paths.length),
-			map((paths) => paths.map((path) => resolve(path))),
-			take(1),
-			mergeAll(),
-		);
+	private getFilesAtFolder(path: string): Observable<string> {
+		return this.fileSystemService.getFilesAtFolder(path).pipe(mergeAll());
 	}
 }

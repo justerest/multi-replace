@@ -18,7 +18,7 @@ if (!paths.length || !searchValue || !replaceValue) {
 	throw new Error('Bad params');
 }
 
-multiReplace(paths, searchValue, replaceValue).subscribe({
+multiReplace({ paths, searchValue, replaceValue }).subscribe({
 	next({ srcPath, srcText, outPath, outText }) {
 		if (srcText !== outText) {
 			console.log(`\n${chalk.greenBright('CHANGED')}:`);

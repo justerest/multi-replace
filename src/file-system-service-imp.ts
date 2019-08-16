@@ -1,9 +1,21 @@
 import { copy, ensureDir, readdir, readFile, remove, rename, writeFile } from 'fs-extra';
-import { dirname } from 'path';
+import glob = require('glob');
+import { dirname, resolve } from 'path';
+import { bindNodeCallback, Observable, of } from 'rxjs';
+import { concatMap, filter, map, take } from 'rxjs/operators';
 
 import { FileSystemService } from './models/file-system-service';
 
 export class FileSystemServiceImp implements FileSystemService {
+	getFilesAtFolder(path: string): Observable<string[]> {
+		return of(path, `${path}/**`).pipe(
+			concatMap((pattern) => bindNodeCallback<string, glob.IOptions, string[]>(glob)(pattern, { nodir: true })),
+			filter((paths) => !!paths.length),
+			map((paths) => paths.map((p) => resolve(p))),
+			take(1),
+		);
+	}
+
 	async readFile(path: string): Promise<string> {
 		return readFile(path, 'UTF-8');
 	}
