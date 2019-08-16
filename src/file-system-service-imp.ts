@@ -4,9 +4,10 @@ import { dirname, resolve } from 'path';
 import { bindNodeCallback, Observable, of } from 'rxjs';
 import { concatMap, filter, map, take } from 'rxjs/operators';
 
-export class FileSystemService {
+import { FileSystemService } from './models/file-system-service';
 
-	glob(sourcePath: string): Observable<string[]> {
+export class FileSystemServiceImp implements FileSystemService {
+	getFilesAtFolder(sourcePath: string): Observable<string[]> {
 		return of(sourcePath, `${sourcePath}/**`).pipe(
 			concatMap((pattern) => bindNodeCallback<string, glob.IOptions, string[]>(glob)(pattern, { nodir: true })),
 			filter((paths) => !!paths.length),
@@ -35,5 +36,4 @@ export class FileSystemService {
 			await remove(path);
 		}
 	}
-
 }

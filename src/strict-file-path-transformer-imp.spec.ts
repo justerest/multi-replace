@@ -1,16 +1,16 @@
 import { resolve } from 'path';
 
-import { StrictFilePathTransformer } from './strict-file-path-transformer';
+import { StrictFilePathTransformerImp } from './strict-file-path-transformer-imp';
 
-describe('class StrictFilePathTransformer', () => {
-	let strictFilePathTransformer: StrictFilePathTransformer;
+describe('class StrictFilePathTransformerImp', () => {
+	let strictFilePathTransformerImp: StrictFilePathTransformerImp;
 
 	beforeEach(() => {
-		strictFilePathTransformer = new StrictFilePathTransformer();
+		strictFilePathTransformerImp = new StrictFilePathTransformerImp();
 	});
 
 	it('should be created', () => {
-		expect(strictFilePathTransformer).toBeTruthy();
+		expect(strictFilePathTransformerImp).toBeTruthy();
 	});
 
 	describe('#replace()', () => {
@@ -21,7 +21,7 @@ describe('class StrictFilePathTransformer', () => {
 				{ basePath: 'search-text/search-text.ts', srcPath: 'search-text/search-text.ts', srcText: 'search-text' },
 			];
 			data.forEach(({ basePath, srcPath }) => {
-				const result = strictFilePathTransformer.replace({
+				const result = strictFilePathTransformerImp.replace({
 					basePath,
 					srcPath,
 					searchValue: 'search-text',

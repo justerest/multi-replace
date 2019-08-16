@@ -1,14 +1,14 @@
-import { MainService } from './main-service';
-import { StringTransformer } from './string-transformer';
+import { MultiReplaceService } from './multi-replace-service';
+import { StringTransformerImp } from './string-transformer-imp';
 
-export * from './file-system-service';
-export * from './string-transformer';
-export * from './main-service';
-export * from './dir-file-path-transformer';
-export * from './strict-file-path-transformer';
+export * from './file-system-service-imp';
+export * from './string-transformer-imp';
+export * from './multi-replace-service';
+export * from './dir-file-path-transformer-imp';
+export * from './strict-file-path-transformer-imp';
 
-const mainService = new MainService();
-const mainServiceStrict = new MainService(new StringTransformer([(str) => str]));
+const multiReplaceService = new MultiReplaceService();
+const multiReplaceServiceStrict = new MultiReplaceService(new StringTransformerImp([(str) => str]));
 
-export const multiReplace = mainService.multiReplace.bind(mainService);
-export const multiReplaceStrict = mainServiceStrict.multiReplace.bind(mainServiceStrict);
+export const multiReplace = multiReplaceService.multiReplace.bind(multiReplaceService);
+export const multiReplaceStrict = multiReplaceServiceStrict.multiReplace.bind(multiReplaceServiceStrict);

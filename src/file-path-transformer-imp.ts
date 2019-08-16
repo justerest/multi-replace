@@ -1,16 +1,11 @@
 import { basename, dirname, relative, resolve } from 'path';
 
-import { StringTransformer } from './string-transformer';
+import { FilePathParams, FilePathTransformer } from './models/file-path-transformer';
+import { StringTransformer } from './models/string-transformer';
+import { StringTransformerImp } from './string-transformer-imp';
 
-export interface FilePathParams {
-	basePath: string;
-	srcPath: string;
-	searchValue: string;
-	replaceValue: string;
-}
-
-export abstract class FilePathTransformer {
-	constructor(protected stringTransformer = new StringTransformer()) {}
+export abstract class FilePathTransformerImp implements FilePathTransformer {
+	constructor(protected stringTransformer: StringTransformer = new StringTransformerImp()) {}
 
 	replace(filePathParams: FilePathParams): string {
 		if (this.isAbsoluteFilePath(filePathParams)) {
@@ -19,7 +14,7 @@ export abstract class FilePathTransformer {
 		return this.replaceRelativePath(filePathParams);
 	}
 
-	protected abstract replaceRelativePath({ basePath, srcPath, searchValue, replaceValue }: FilePathParams): string;
+	protected abstract replaceRelativePath(filePathParams: FilePathParams): string;
 
 	protected replaceAbsolutePath({ srcPath, searchValue, replaceValue }: FilePathParams): string {
 		const filename = basename(srcPath);

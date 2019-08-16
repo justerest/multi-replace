@@ -8,7 +8,7 @@ type CaseTransformer = (str: string) => string;
 
 export const defaultTransformers = [angularCase, camelCase, constantCase, kebabCase, pascalCase, snakeCase];
 
-export class StringTransformer {
+export class StringTransformerImp {
 	constructor(
 		private caseTransformers: CaseTransformer[] = defaultTransformers,
 		private defaultTransformer: CaseTransformer = camelCase,

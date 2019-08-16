@@ -1,8 +1,9 @@
 import { relative, resolve } from 'path';
 
-import { FilePathParams, FilePathTransformer } from './file-path-transformer';
+import { FilePathTransformerImp } from './file-path-transformer-imp';
+import { FilePathParams } from './models/file-path-transformer';
 
-export class StrictFilePathTransformer extends FilePathTransformer {
+export class StrictFilePathTransformerImp extends FilePathTransformerImp {
 	protected replaceRelativePath({ basePath, srcPath, searchValue, replaceValue }: FilePathParams): string {
 		const relativePath = relative(basePath, srcPath);
 		const path = this.stringTransformer.replace(relativePath, searchValue, replaceValue);
