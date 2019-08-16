@@ -5,7 +5,7 @@ const angular_case_1 = require("./utils/angular-case");
 const constant_case_1 = require("./utils/constant-case");
 const pascal_case_1 = require("./utils/pascal-case");
 exports.defaultTransformers = [angular_case_1.angularCase, lodash_1.camelCase, constant_case_1.constantCase, lodash_1.kebabCase, pascal_case_1.pascalCase, lodash_1.snakeCase];
-class StringTransformer {
+class StringTransformerImp {
     constructor(caseTransformers = exports.defaultTransformers, defaultTransformer = lodash_1.camelCase) {
         this.caseTransformers = caseTransformers;
         this.defaultTransformer = defaultTransformer;
@@ -28,4 +28,4 @@ class StringTransformer {
         this.caseTransformers.sort((transformer) => (transformer === this.defaultTransformer ? 1 : -1));
     }
 }
-exports.StringTransformer = StringTransformer;
+exports.StringTransformerImp = StringTransformerImp;

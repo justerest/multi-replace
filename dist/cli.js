@@ -12,7 +12,7 @@ const { paths, searchValue, replaceValue } = commandLineArgs([
 if (!paths.length || !searchValue || !replaceValue) {
     throw new Error('Bad params');
 }
-index_1.multiReplace(paths, searchValue, replaceValue).subscribe({
+index_1.multiReplace({ paths, searchValue, replaceValue }).subscribe({
     next({ srcPath, srcText, outPath, outText }) {
         if (srcText !== outText) {
             console.log(`\n${chalk_1.default.greenBright('CHANGED')}:`);
