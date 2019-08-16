@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0](https://github.com/justerest/multi-replace/compare/v2.3.0...v3.0.0) (2019-08-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* change signature of multiReplace function
+
+### Features
+
+* copy and multi-replace function ([a192a52](https://github.com/justerest/multi-replace/commit/a192a52))
+* multi replace including selected folder function ([c47d666](https://github.com/justerest/multi-replace/commit/c47d666))
+
+
+* multi-replace params ([a0a840a](https://github.com/justerest/multi-replace/commit/a0a840a))
+
 ## [2.3.0](https://github.com/justerest/multi-replace/compare/v2.2.1...v2.3.0) (2019-08-15)
 
 
