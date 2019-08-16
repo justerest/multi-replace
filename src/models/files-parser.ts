@@ -1,4 +1,5 @@
 import { Observable } from 'rxjs';
+import { MultiReplaceParams } from './multi-replace-params';
 
 export interface FileData {
 	basePath: string;
@@ -7,5 +8,5 @@ export interface FileData {
 }
 
 export interface FilesParser {
-	parse(paths: string[]): Observable<FileData>;
+	parse(params: MultiReplaceParams): Observable<FileData>;
 }

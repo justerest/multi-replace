@@ -31,7 +31,7 @@ describe('class MultiReplaceService', () => {
 			expect.assertions(1);
 			filesData = { basePath: '', srcPath: '', srcText: 'search-text' };
 			multiReplaceService
-				.multiReplace([], 'search-text', 'replace-text')
+				.multiReplace({ paths: [], searchValue: 'search-text', replaceValue: 'replace-text' })
 				.subscribe((data) => expect(data.outText).toBe('replace-text'), void 0, complete);
 		});
 	});

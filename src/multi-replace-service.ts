@@ -7,6 +7,7 @@ import { FilesParserImp } from './files-parser-imp';
 import { FilePathTransformer } from './models/file-path-transformer';
 import { FileSystemService } from './models/file-system-service';
 import { FileData, FilesParser } from './models/files-parser';
+import { MultiReplaceParams } from './models/multi-replace-params';
 import { StringTransformer } from './models/string-transformer';
 import { StrictFilePathTransformerImp } from './strict-file-path-transformer-imp';
 import { StringTransformerImp } from './string-transformer-imp';
@@ -24,8 +25,8 @@ export class MultiReplaceService {
 		private filesParser: FilesParser = new FilesParserImp(fileSystemService),
 	) {}
 
-	multiReplace(paths: string[], searchValue: string, replaceValue: string): Observable<ChangedFileData> {
-		return this.filesParser.parse(paths).pipe(
+	multiReplace({ paths, searchValue, replaceValue }: MultiReplaceParams): Observable<ChangedFileData> {
+		return this.filesParser.parse({ paths, searchValue, replaceValue }).pipe(
 			set('outText', ({ srcText }) => this.stringTransformer.replace(srcText, searchValue, replaceValue)),
 			set('outPath', ({ basePath, srcPath }) =>
 				this.filePathTransformer.replace({ basePath, srcPath, searchValue, replaceValue }),
