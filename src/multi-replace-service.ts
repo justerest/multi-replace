@@ -3,13 +3,13 @@ import { mergeTap, set } from 'rxjs-set-operators';
 import { filter } from 'rxjs/operators';
 
 import { FileSystemServiceImp } from './file-system-service-imp';
-import { FilesParserImp } from './files-parser-imp';
-import { FilePathTransformer } from './models/file-path-transformer';
+import { FilenameTransformerImp } from './filename-transformers/filename-transformer-imp';
+import { FilesParserImp } from './files-parsers/files-parser-imp';
 import { FileSystemService } from './models/file-system-service';
+import { FilenameTransformer } from './models/filename-transformer';
 import { FileData, FilesParser } from './models/files-parser';
 import { MultiReplaceParams } from './models/multi-replace-params';
 import { StringTransformer } from './models/string-transformer';
-import { StrictFilePathTransformerImp } from './strict-file-path-transformer-imp';
 import { StringTransformerImp } from './string-transformer-imp';
 
 export interface ChangedFileData extends FileData {
@@ -21,7 +21,7 @@ export class MultiReplaceService {
 	constructor(
 		private stringTransformer: StringTransformer = new StringTransformerImp(),
 		private fileSystemService: FileSystemService = new FileSystemServiceImp(),
-		private filePathTransformer: FilePathTransformer = new StrictFilePathTransformerImp(stringTransformer),
+		private filenameTransformer: FilenameTransformer = new FilenameTransformerImp(stringTransformer),
 		private filesParser: FilesParser = new FilesParserImp(fileSystemService),
 	) {}
 
@@ -29,7 +29,7 @@ export class MultiReplaceService {
 		return this.filesParser.parse({ paths, searchValue, replaceValue }).pipe(
 			set('outText', ({ srcText }) => this.stringTransformer.replace(srcText, searchValue, replaceValue)),
 			set('outPath', ({ basePath, srcPath }) =>
-				this.filePathTransformer.replace({ basePath, srcPath, searchValue, replaceValue }),
+				this.filenameTransformer.replace({ basePath, srcPath, searchValue, replaceValue }),
 			),
 			filter((fileData) => this.hasFileChanges(fileData)),
 			mergeTap(({ srcPath, outText }) => this.fileSystemService.writeFile(srcPath, outText)),

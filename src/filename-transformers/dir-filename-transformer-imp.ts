@@ -1,9 +1,9 @@
 import { dirname, relative, resolve } from 'path';
 
-import { FilePathTransformerImp } from './file-path-transformer-imp';
-import { FilePathParams } from './models/file-path-transformer';
+import { FilePathParams } from '../models/filename-transformer';
+import { FilenameTransformerImp } from './filename-transformer-imp';
 
-export class DirFilePathTransformerImp extends FilePathTransformerImp {
+export class DirFilenameTransformerImp extends FilenameTransformerImp {
 	protected replaceRelativePath({ basePath, srcPath, searchValue, replaceValue }: FilePathParams): string {
 		const dir = dirname(basePath.replace(/\**$/, ''));
 		const relativePath = relative(dir, srcPath);

@@ -1,7 +1,7 @@
 import { resolve } from 'path';
 import { of } from 'rxjs';
+import { FileSystemService } from '../models/file-system-service';
 import { CopyFilesParserImp } from './copy-files-parser-imp';
-import { FileSystemService } from './models/file-system-service';
 
 describe('class CopyFilesParserImp', () => {
 	let copyFilesParserImp: CopyFilesParserImp;

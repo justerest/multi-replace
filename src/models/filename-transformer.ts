@@ -5,6 +5,6 @@ export interface FilePathParams {
 	replaceValue: string;
 }
 
-export interface FilePathTransformer {
+export interface FilenameTransformer {
 	replace(filePathParams: FilePathParams): string;
 }

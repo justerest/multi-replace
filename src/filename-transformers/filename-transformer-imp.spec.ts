@@ -1,16 +1,16 @@
 import { resolve } from 'path';
 
-import { StrictFilePathTransformerImp } from './strict-file-path-transformer-imp';
+import { FilenameTransformerImp } from './filename-transformer-imp';
 
-describe('class StrictFilePathTransformerImp', () => {
-	let strictFilePathTransformerImp: StrictFilePathTransformerImp;
+describe('class FilenameTransformerImp', () => {
+	let filenameTransformerImp: FilenameTransformerImp;
 
 	beforeEach(() => {
-		strictFilePathTransformerImp = new StrictFilePathTransformerImp();
+		filenameTransformerImp = new FilenameTransformerImp();
 	});
 
 	it('should be created', () => {
-		expect(strictFilePathTransformerImp).toBeTruthy();
+		expect(filenameTransformerImp).toBeTruthy();
 	});
 
 	describe('#replace()', () => {
@@ -21,7 +21,7 @@ describe('class StrictFilePathTransformerImp', () => {
 				{ basePath: 'search-text/search-text.ts', srcPath: 'search-text/search-text.ts', srcText: 'search-text' },
 			];
 			data.forEach(({ basePath, srcPath }) => {
-				const result = strictFilePathTransformerImp.replace({
+				const result = filenameTransformerImp.replace({
 					basePath,
 					srcPath,
 					searchValue: 'search-text',
@@ -29,6 +29,17 @@ describe('class StrictFilePathTransformerImp', () => {
 				});
 				expect(result).toBe(resolve('search-text/replace-text.ts'));
 			});
+		});
+
+		it('should replace file path', () => {
+			const value = filenameTransformerImp.replace({
+				searchValue: 'ControlGroupImp',
+				replaceValue: 'RootControlGroupImp',
+				basePath: '/tmp/ControlGroupImp.ts',
+				srcPath: '/tmp/ControlGroupImp.ts',
+			});
+
+			expect(value).toBe('/tmp/RootControlGroupImp.ts');
 		});
 	});
 });

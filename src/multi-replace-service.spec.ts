@@ -1,4 +1,4 @@
-import { of } from 'rxjs';
+import { EMPTY, of } from 'rxjs';
 
 import { FileData } from './models/files-parser';
 import { MultiReplaceService } from './multi-replace-service';
@@ -11,9 +11,11 @@ describe('class MultiReplaceService', () => {
 		multiReplaceService = new MultiReplaceService(
 			void 0,
 			{
+				getFilesAtFolder: () => EMPTY,
 				writeFile: async () => void 0,
 				readFile: async () => '',
 				moveFile: async () => void 0,
+				copy: async () => void 0,
 			},
 			void 0,
 			{

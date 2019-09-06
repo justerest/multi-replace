@@ -1,16 +1,16 @@
-import { basename, dirname, relative, resolve } from 'path';
+import { basename, dirname, resolve } from 'path';
 
-import { DirFilePathTransformerImp } from './dir-file-path-transformer-imp';
+import { DirFilenameTransformerImp } from './dir-filename-transformer-imp';
 
-describe('class DirFilePathTransformerImp', () => {
-	let dirFilePathTransformerImp: DirFilePathTransformerImp;
+describe('class DirFilenameTransformerImp', () => {
+	let dirFilenameTransformerImp: DirFilenameTransformerImp;
 
 	beforeEach(() => {
-		dirFilePathTransformerImp = new DirFilePathTransformerImp();
+		dirFilenameTransformerImp = new DirFilenameTransformerImp();
 	});
 
 	it('should be created', () => {
-		expect(dirFilePathTransformerImp).toBeTruthy();
+		expect(dirFilenameTransformerImp).toBeTruthy();
 	});
 
 	describe('#replace()', () => {
@@ -27,7 +27,7 @@ describe('class DirFilePathTransformerImp', () => {
 		});
 
 		it('should replace absolute file path preserving dir', () => {
-			const result = dirFilePathTransformerImp.replace({
+			const result = dirFilenameTransformerImp.replace({
 				basePath: 'search-text/search-text/search-text.ts',
 				srcPath: 'search-text/search-text/search-text.ts',
 				searchValue: 'search-text',
@@ -37,7 +37,7 @@ describe('class DirFilePathTransformerImp', () => {
 		});
 
 		it('should replace file path with first dir', () => {
-			const result = dirFilePathTransformerImp.replace({
+			const result = dirFilenameTransformerImp.replace({
 				basePath: 'search-text/search-text',
 				srcPath: 'search-text/search-text/search-text.ts',
 				searchValue: 'search-text',
@@ -47,7 +47,7 @@ describe('class DirFilePathTransformerImp', () => {
 		});
 
 		it('should replace file path with first dir', () => {
-			const result = dirFilePathTransformerImp.replace({
+			const result = dirFilenameTransformerImp.replace({
 				basePath: 'search-text/search-text/**',
 				srcPath: 'search-text/search-text/search-text.ts',
 				searchValue: 'search-text',
@@ -57,7 +57,7 @@ describe('class DirFilePathTransformerImp', () => {
 		});
 
 		it('should replace file path with first dir', () => {
-			const result = dirFilePathTransformerImp.replace({
+			const result = dirFilenameTransformerImp.replace({
 				basePath: 'search-text/search-text',
 				srcPath: 'search-text/search-text/search-text.ts',
 				searchValue: 'search-text',
@@ -67,7 +67,7 @@ describe('class DirFilePathTransformerImp', () => {
 		});
 
 		it('should replace file path with first dir', () => {
-			const result = dirFilePathTransformerImp.replace({
+			const result = dirFilenameTransformerImp.replace({
 				basePath: 'search-text',
 				srcPath: 'search-text/search-text/search-text.ts',
 				searchValue: 'search-text',

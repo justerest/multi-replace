@@ -1,9 +1,9 @@
-import { CopyFilesParserImp } from './copy-files-parser-imp';
-import { DirFilePathTransformerImp } from './dir-file-path-transformer-imp';
+import { DirFilenameTransformerImp } from './filename-transformers/dir-filename-transformer-imp';
+import { CopyFilesParserImp } from './files-parsers/copy-files-parser-imp';
 import { MultiReplaceService } from './multi-replace-service';
 import { StringTransformerImp } from './string-transformer-imp';
 
-export * from './models/file-path-transformer';
+export * from './models/filename-transformer';
 export * from './models/file-system-service';
 export * from './models/files-parser';
 export * from './models/multi-replace-params';
@@ -12,14 +12,14 @@ export * from './models/string-transformer';
 export * from './file-system-service-imp';
 export * from './string-transformer-imp';
 export * from './multi-replace-service';
-export * from './dir-file-path-transformer-imp';
-export * from './strict-file-path-transformer-imp';
-export * from './files-parser-imp';
-export * from './copy-files-parser-imp';
+export * from './filename-transformers/dir-filename-transformer-imp';
+export * from './filename-transformers/filename-transformer-imp';
+export * from './files-parsers/files-parser-imp';
+export * from './files-parsers/copy-files-parser-imp';
 
 const multiReplaceService = new MultiReplaceService();
 const multiReplaceCopyService = new MultiReplaceService(void 0, void 0, void 0, new CopyFilesParserImp());
-const multiReplaceWithFolderService = new MultiReplaceService(void 0, void 0, new DirFilePathTransformerImp());
+const multiReplaceWithFolderService = new MultiReplaceService(void 0, void 0, new DirFilenameTransformerImp());
 const multiReplaceServiceStrict = new MultiReplaceService(new StringTransformerImp([(str) => str]));
 
 export const multiReplace = multiReplaceService.multiReplace.bind(multiReplaceService);
