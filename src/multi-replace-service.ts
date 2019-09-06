@@ -1,6 +1,5 @@
 import { Observable } from 'rxjs';
 import { mergeTap, set } from 'rxjs-set-operators';
-import { filter } from 'rxjs/operators';
 
 import { FileSystemServiceImp } from './file-system-service-imp';
 import { FilenameTransformerImp } from './filename-transformers/filename-transformer-imp';
@@ -31,13 +30,8 @@ export class MultiReplaceService {
 			set('outPath', ({ basePath, srcPath }) =>
 				this.filenameTransformer.replace({ basePath, srcPath, searchValue, replaceValue }),
 			),
-			filter((fileData) => this.hasFileChanges(fileData)),
 			mergeTap(({ srcPath, outText }) => this.fileSystemService.writeFile(srcPath, outText)),
 			mergeTap(({ srcPath, outPath }) => this.fileSystemService.moveFile(srcPath, outPath)),
 		);
-	}
-
-	private hasFileChanges({ srcText, outText, srcPath, outPath }: ChangedFileData): boolean {
-		return srcText !== outText || srcPath !== outPath;
 	}
 }

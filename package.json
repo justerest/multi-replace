@@ -20,6 +20,7 @@
     "start": "node dist/cli.js",
     "start:dev": "npm run build && npm start",
     "test": "jest",
+    "test:watch": "jest --watch",
     "build:commit": "npm run build && git add dist && git commit -m \"chore: build\"",
     "release": "standard-version"
   },
