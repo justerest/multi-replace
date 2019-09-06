@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
-import { FilePathTransformer } from './models/file-path-transformer';
 import { FileSystemService } from './models/file-system-service';
+import { FilenameTransformer } from './models/filename-transformer';
 import { FileData, FilesParser } from './models/files-parser';
 import { MultiReplaceParams } from './models/multi-replace-params';
 import { StringTransformer } from './models/string-transformer';
@@ -11,9 +11,8 @@ export interface ChangedFileData extends FileData {
 export declare class MultiReplaceService {
     private stringTransformer;
     private fileSystemService;
-    private filePathTransformer;
+    private filenameTransformer;
     private filesParser;
-    constructor(stringTransformer?: StringTransformer, fileSystemService?: FileSystemService, filePathTransformer?: FilePathTransformer, filesParser?: FilesParser);
+    constructor(stringTransformer?: StringTransformer, fileSystemService?: FileSystemService, filenameTransformer?: FilenameTransformer, filesParser?: FilesParser);
     multiReplace({ paths, searchValue, replaceValue }: MultiReplaceParams): Observable<ChangedFileData>;
-    private hasFileChanges;
 }

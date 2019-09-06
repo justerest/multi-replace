@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const path_1 = require("path");
-const file_path_transformer_imp_1 = require("./file-path-transformer-imp");
-class DirFilePathTransformerImp extends file_path_transformer_imp_1.FilePathTransformerImp {
+const filename_transformer_imp_1 = require("./filename-transformer-imp");
+class DirFilenameTransformerImp extends filename_transformer_imp_1.FilenameTransformerImp {
     replaceRelativePath({ basePath, srcPath, searchValue, replaceValue }) {
         const dir = path_1.dirname(basePath.replace(/\**$/, ''));
         const relativePath = path_1.relative(dir, srcPath);
@@ -10,4 +10,4 @@ class DirFilePathTransformerImp extends file_path_transformer_imp_1.FilePathTran
         return path_1.resolve(dir, path);
     }
 }
-exports.DirFilePathTransformerImp = DirFilePathTransformerImp;
+exports.DirFilenameTransformerImp = DirFilenameTransformerImp;
